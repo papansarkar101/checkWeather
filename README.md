@@ -1,0 +1,1 @@
+A simple django app to check weather.

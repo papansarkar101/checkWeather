@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Check Weather </title>
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- For icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'Yusei Magic', sans-serif;">
+    <nav>
+        <div class="nav-wrapper">
+          <a href="{% url 'home' %}" class="brand-logo center"><i class="material-icons" style="font-size: 3.5rem;">cloud</i>Check-weather</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+          </ul>
+        </div>
+      </nav>
+        
+
+    <div class="container" style="text-align: center;">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2> Enter Your City name:  </h2>
+            <input type="text" name="city" required>
+            <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+              </button>
+        </form>
+
+        <br> <br>
+
+          <div class="row">
+            <div class="col s12 m12">
+              <div class="card">
+                <div>
+                    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" 
+                    style="width: 50px; height: 50px;" alt="Image">
+                </div>
+                <div class="card-content">
+                  <span class="card-title"> {{ weather.city }} </span>
+                  <h2> {{ weather.temperature }}°C </h2>
+                  <h6> {{ weather.description }} </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+</body>
+</html>
